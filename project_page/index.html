@@ -22,7 +22,8 @@
       font-family: 'Castoro', serif;
       font-size: 1.8rem;
       font-weight: bold;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      color: white;
     }
     .section-title {
       font-size: 1.5rem;
@@ -66,83 +67,55 @@
       border-radius: 8px;
       overflow-x: auto;
     }
+    .author-block {
+      color: white;
+      opacity: 0.95;
+    }
+    .affiliation-line {
+      color: white;
+      opacity: 0.85;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
 
-<!-- Top Banner -->
-<section class="top-banner" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
+<!-- Top Banner - Combined Header -->
+<section class="top-banner" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px 30px;">
   <div style="text-align: center; color: white;">
-    <h1 style="font-size: 2.5rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+    <h1 style="font-size: 2.5rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 0.3rem;">
       IDR Framework
     </h1>
-    <p style="font-size: 1.2rem; opacity: 0.9;">Infer-Diagnose-Refine for Test-time Adaptation in VLA Models</p>
-  </div>
-</section>
+    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 1.5rem;">Infer-Diagnose-Refine for Test-time Adaptation in VLA Models</p>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
+    <h2 style="font-family: 'Castoro', serif; font-size: 1.6rem; font-weight: bold; margin-bottom: 0.5rem;">
+      Infer-Diagnose-Refine: Causality-driven Test-time Adaptation for Vision-Language-Action Models
+    </h2>
 
-          <h1 class="title is-2 publication-title" style="font-size: 2rem; margin-top: 1rem;">
-            Infer-Diagnose-Refine: Causality-driven Test-time Adaptation for Vision-Language-Action Models
-          </h1>
+    <div style="font-size: 1.1rem; margin-bottom: 0.3rem;">
+      <span class="author-block">Anonymous Authors</span>
+    </div>
+    <div style="font-size: 0.95rem; margin-bottom: 1.2rem;">
+      <span class="affiliation-line">Institution information to be added</span>
+    </div>
+    <div style="font-size: 0.9rem; margin-bottom: 1.5rem; opacity: 0.8;">
+      Venue / acceptance information to be added
+    </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Anonymous Authors</span>
-          </div>
-
-          <div class="is-size-5 publication-authors affiliation-line">
-            <span class="author-block">Institution information to be added</span>
-          </div>
-
-          <div class="publication-acceptance">
-            <span class="acceptance-badge empty-badge">Venue / acceptance information to be added</span>
-          </div>
-
-          <div class="column has-text-centered" style="margin-top: 1.5rem;">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="CF-VLA-paper-v9.png" class="external-link button is-normal is-rounded is-danger">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper PDF</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-light is-disabled" aria-disabled="true">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv TBD</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled" aria-disabled="true">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code TBD</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled" aria-disabled="true">
-                  <span class="icon"><span class="hf-icon">HF</span></span>
-                  <span>Models TBD</span>
-                </a>
-              </span>
-            </div>
-          </div>
-
-          <!-- Teaser Image -->
-          <div class="figure-container" style="margin-top: 2rem;">
-            <img src="images/teaser_image3.png" alt="IDR Framework Overview" style="width: 600px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="video-placeholder" style="display: none;">
-              <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-              <p>Teaser figure to be added</p>
-            </div>
-            <p class="figure-caption">IDR Framework: Existing VLA models directly produce actions from multimodal fusion. IDR infers factual/counterfactual outputs, diagnoses causal effects, and refines actions without retraining.</p>
-          </div>
-
-        </div>
-      </div>
+    <!-- Buttons -->
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+      <a href="CF-VLA-paper-v9.pdf" class="button is-normal is-rounded is-danger" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);">
+        <span class="icon"><i class="fas fa-file-pdf"></i></span>
+        <span>Paper</span>
+      </a>
+      <a href="#" class="button is-normal is-rounded is-light" style="opacity: 0.7;">
+        <span class="icon"><i class="ai ai-arxiv"></i></span>
+        <span>arXiv</span>
+      </a>
+      <a href="#" class="button is-normal is-rounded is-dark" style="opacity: 0.7;">
+        <span class="icon"><i class="fab fa-github"></i></span>
+        <span>Code</span>
+      </a>
     </div>
   </div>
 </section>
@@ -173,7 +146,7 @@
         <h2 class="title is-3">Method Overview</h2>
 
         <div class="figure-container">
-          <img src="images/method2.png" alt="IDR Method" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="images/method2.png" alt="IDR Method" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="video-placeholder" style="display: none;">
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Method figure to be added</p>
@@ -193,7 +166,7 @@
       </div>
     </div>
 
-    <!-- Causal Graph -->
+    <!-- Causal Analysis -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Causal Analysis</h2>
@@ -213,30 +186,66 @@
       </div>
     </div>
 
-    <!-- Modality Analysis -->
+    <!-- Observation 1: Modality Contribution Heatmap -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Modality Contribution Analysis</h2>
+        <h2 class="title is-3">Observation 1: Modality Contribution Analysis</h2>
 
         <div class="figure-container">
-          <img src="images/fig_baseline_model_suite_heatmap.png" alt="Model Suite Heatmap" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="images/fig_baseline_model_suite_heatmap.png" alt="Model Suite Heatmap" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="video-placeholder" style="display: none;">
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Heatmap figure to be added</p>
           </div>
-          <p class="figure-caption">Vision effect ratio across different VLA models and task suites in LIBERO.</p>
+          <p class="figure-caption">Vision effect ratio across different VLA models and task suites in LIBERO. Counterfactual interventions reveal distinct modality-reliance regimes across representative VLA backbones.</p>
         </div>
+      </div>
+    </div>
 
-        <div class="content has-text-justified" style="text-align: justify;">
-          <p>Counterfactual interventions reveal distinct modality-reliance regimes across representative VLA backbones. Different VLA architectures exhibit distinct reliance patterns, ranging from vision-heavy to proprioception-dominant behavior.</p>
+    <!-- Observation 2: Phase-dependent Modality Importance -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Observation 2: Phase-dependent Modality Importance</h2>
+
+        <div class="figure-container">
+          <img src="images/teaser_image3.png" alt="Phase Analysis" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="video-placeholder" style="display: none;">
+            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Phase analysis figure to be added</p>
+          </div>
+          <p class="figure-caption">Visual importance varies across different execution phases (Locate, Approach, Grasp, Transport, Place), suggesting the need for dynamic, phase-aware modality adaptation.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Observation 3: Model Architecture Differences -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Observation 3: Architecture-specific Modality Patterns</h2>
+
+        <div class="content has-text-left" style="margin-top: 1rem;">
+          <p>Different VLA architectures exhibit distinct reliance patterns:</p>
+          <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+            <li><strong>OpenVLA-OFT:</strong> High vision reliance, stable across tasks</li>
+            <li><strong>π0.5:</strong> Balanced vision-proprioception, task-dependent variations</li>
+            <li><strong>X-VLA:</strong> Proprioception-dominant with context-sensitive vision use</li>
+            <li><strong>VLA-Adapter:</strong> Adaptive switching between modalities</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simulation Results Header -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2" style="border-bottom: 3px solid #667eea; padding-bottom: 10px;">Simulation Benchmark Results</h2>
       </div>
     </div>
 
     <!-- LIBERO Results -->
     <div class="columns is-centered has-text-centered section-block" id="results">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">LIBERO Benchmark Results</h2>
+        <h3 class="title is-4">LIBERO Benchmark</h3>
 
         <div class="content has-text-justified" style="text-align: justify;">
           <p>IDR consistently improves reproduced baselines across four VLA backbones on LIBERO benchmark.</p>
@@ -325,29 +334,144 @@
       </div>
     </div>
 
-    <!-- Real World Results -->
+    <!-- CALVIN Results -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Real-World Experiment Results</h2>
+        <h3 class="title is-4">CALVIN Benchmark</h3>
 
-        <div class="figure-container">
-          <img src="images/real_env2.png" alt="Real World Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <div class="video-placeholder" style="display: none;">
-            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-            <p>Real world setup figure to be added</p>
-          </div>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Average Task Length</th>
+                <th>Improvement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Baseline</td>
+                <td>4.22</td>
+                <td>—</td>
+              </tr>
+              <tr style="background-color: #e8f5e9;">
+                <td><strong>+IDR</strong></td>
+                <td><strong>4.44</strong></td>
+                <td><strong>+0.22 (+5.2%)</strong></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
+    </div>
 
+    <!-- Simpler Results -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Simpler Benchmark</h3>
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Robot</th>
+                <th>Baseline</th>
+                <th>+IDR</th>
+                <th>Improvement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Simpler VA</td>
+                <td>75.88%</td>
+                <td>78.90%</td>
+                <td>+3.02%</td>
+              </tr>
+              <tr>
+                <td>Simpler VM</td>
+                <td>81.15%</td>
+                <td>82.13%</td>
+                <td>+0.98%</td>
+              </tr>
+              <tr>
+                <td>Simpler WidowX</td>
+                <td>93.75%</td>
+                <td>95.83%</td>
+                <td>+2.08%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real World Results Header -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2" style="border-bottom: 3px solid #667eea; padding-bottom: 10px;">Real-World Experiment Results</h2>
+      </div>
+    </div>
+
+    <!-- Real World Results Images -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
         <div class="figure-container">
-          <img src="images/real_results.png" alt="Real World Results" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="images/real_results.png" alt="Real World Results" style="width: 800px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="video-placeholder" style="display: none;">
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Real world results figure to be added</p>
           </div>
           <p class="figure-caption">Real-world experiments on pick-and-place, deformable object manipulation, and long-horizon desk organization tasks.</p>
         </div>
+      </div>
+    </div>
 
-        <div class="table-container" style="margin-top: 1rem;">
+    <!-- Organize Table Multi-step Results -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Organize Table: Multi-step Manipulation Results</h3>
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Task Level</th>
+                <th>Baseline (steps)</th>
+                <th>+IDR (steps)</th>
+                <th>Improvement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Level 1 (2 steps)</td>
+                <td>2.0 avg</td>
+                <td>2.0 avg</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Level 2 (3 steps)</td>
+                <td>2.5 avg</td>
+                <td>2.8 avg</td>
+                <td>+12%</td>
+              </tr>
+              <tr style="background-color: #e8f5e9;">
+                <td><strong>Level 3 (4 steps)</strong></td>
+                <td><strong>2.3 avg</strong></td>
+                <td><strong>4.0 avg</strong></td>
+                <td><strong>+74%</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real World Task Details -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Detailed Real-World Task Performance</h3>
+
+        <div class="table-container">
           <table class="table is-bordered is-striped is-fullwidth result-table">
             <thead>
               <tr>
@@ -365,20 +489,26 @@
               <tr><td>Fold Clothes L2</td><td>75.0%</td><td>91.7%</td><td>+16.7%</td><td>46s → 42s</td></tr>
               <tr><td>Fold Clothes L3</td><td>8.3%</td><td>33.3%</td><td>+25.0%</td><td>222s → 155s</td></tr>
               <tr><td>Sweep Trash</td><td>46.9%</td><td>68.8%</td><td>+21.9%</td><td>16.0s → 15.9s</td></tr>
-              <tr><td>Organize Desk (steps)</td><td>2.3 avg</td><td>4.0 avg</td><td>+74%</td><td>—</td></tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- Ablation Study -->
+    <!-- Ablation Experiments Header -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2" style="border-bottom: 3px solid #667eea; padding-bottom: 10px;">Ablation Studies</h2>
+      </div>
+    </div>
+
+    <!-- Hyperparameter Ablation -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Hyperparameter Ablation</h2>
+        <h3 class="title is-4">Hyperparameter Sensitivity</h3>
 
         <div class="figure-container">
-          <img src="images/ablation_on_hypers.png" alt="Hyperparameter Ablation" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="images/ablation_on_hypers.png" alt="Hyperparameter Ablation" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="video-placeholder" style="display: none;">
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Ablation figure to be added</p>
@@ -388,13 +518,13 @@
       </div>
     </div>
 
-    <!-- Phase Analysis -->
+    <!-- Phase Ablation -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Phase-dependent Intervention</h2>
+        <h3 class="title is-4">Phase-dependent Intervention</h3>
 
         <div class="figure-container">
-          <img src="images/ablation_phase.png" alt="Phase Ablation" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="images/ablation_phase.png" alt="Phase Ablation" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="video-placeholder" style="display: none;">
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Phase analysis figure to be added</p>
@@ -404,32 +534,6 @@
 
         <div class="content has-text-justified" style="text-align: justify;">
           <p>IDR shows that selective intervention during motion-transition phases (grasp, place) yields better performance than uniform intervention across all phases. This supports the need for dynamic, phase-aware modality adaptation.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Simpler & CALVIN Results -->
-    <div class="columns is-centered has-text-centered section-block">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Simpler and CALVIN Benchmark Results</h2>
-
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-fullwidth result-table">
-            <thead>
-              <tr>
-                <th>Benchmark</th>
-                <th>Baseline</th>
-                <th>+IDR</th>
-                <th>Improvement</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Simpler VA Average</td><td>75.88%</td><td>78.90%</td><td>+3.02%</td></tr>
-              <tr><td>Simpler VM Average</td><td>81.15%</td><td>82.13%</td><td>+0.98%</td></tr>
-              <tr><td>Simpler WidowX Average</td><td>93.75%</td><td>95.83%</td><td>+2.08%</td></tr>
-              <tr><td>CALVIN Average Length</td><td>4.22</td><td>4.44</td><td>+0.22</td></tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
