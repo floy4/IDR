@@ -51,19 +51,24 @@
       border-collapse: collapse;
       width: 100%;
     }
-    th, td {
-      text-align: center;
+    .table th,
+    .table td,
+    table th,
+    table td {
+      text-align: center !important;
       padding: 8px 12px;
       border: none;
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
     }
+    .table thead th,
     thead th {
       background-color: #f8f8f8;
       border-top: 2px solid #333;
       border-bottom: 2px solid #333;
       font-weight: bold;
-      text-align: center;
+      text-align: center !important;
+      vertical-align: middle;
     }
     tbody tr:last-child td {
       border-bottom: 2px solid #333;
