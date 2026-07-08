@@ -65,7 +65,7 @@ IDR consistently improves all four VLA backbones (π<sub>0.5</sub>, X-VLA, OpenV
 
 ### Real-World Experiments
 
-![Real World Results](https://raw.githubusercontent.com/floy4/IDR/master/images/fig_realworld_panels.png)
+![Real World Results](https://raw.githubusercontent.com/floy4/IDR/master/images/real_results.png)
 
 *Real-world efficiency-success trade-off. Success rate and average completion time are reported for each task. Arrows (Baseline → IDR) pointing upward/leftward indicate simultaneous improvements in both.*
 
