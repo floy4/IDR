@@ -13,7 +13,7 @@ In this paper, we propose an **Infer-Diagnose-Refine (IDR)** framework, a model-
 
 IDR treats visual importance as a dynamic factor during execution, diagnoses how visual observations causally affect the current prediction, and refines the action accordingly.
 
-![IDR Framework](https://raw.githubusercontent.com/floy4/IDR/main/images/method2.png)
+![IDR Framework](https://raw.githubusercontent.com/floy4/IDR/master/images/method2.png)
 
 *IDR Framework Architecture: Zero-padding interventions for counterfactual inference, norm-based effect quantification, and gated residual fusion.*
 
@@ -27,7 +27,7 @@ IDR treats visual importance as a dynamic factor during execution, diagnoses how
 
 ## Causal Analysis
 
-![Causal Graph](https://raw.githubusercontent.com/floy4/IDR/main/images/causal_graph.png)
+![Causal Graph](https://raw.githubusercontent.com/floy4/IDR/master/images/causal_graph.png)
 
 *Causal graph illustrating the modality intervention framework.*
 
@@ -43,7 +43,7 @@ The same VLA model (X-VLA) shifts its visual effect pattern substantially across
 
 ### Observation 2: Model architectures shape specific causal effect patterns
 
-![Model Heatmap](https://raw.githubusercontent.com/floy4/IDR/main/images/fig_baseline_model_suite_heatmap.png)
+![Model Heatmap](https://raw.githubusercontent.com/floy4/IDR/master/images/fig_baseline_model_suite_heatmap.png)
 
 *Visual effect ratio (R<sub>img</sub>) heatmap across models and LIBERO suites. Each model maintains a consistent visual effect pattern.*
 
@@ -51,7 +51,7 @@ Within the same benchmark, different VLA models exhibit significantly different 
 
 ### Observation 3: Manipulation phases dynamically alter causal effect patterns
 
-![Phase Analysis](https://raw.githubusercontent.com/floy4/IDR/main/images/ablation_phase.png)
+![Phase Analysis](https://raw.githubusercontent.com/floy4/IDR/master/images/ablation_phase.png)
 
 *Phase-aligned visual effect ratio. The plot reports the visual effect ratio R<sub>img</sub> over task progress for the baseline, Mode E, and Mode F. Dashed vertical lines indicate gripper close and open events.*
 
@@ -65,7 +65,7 @@ IDR consistently improves all four VLA backbones (π<sub>0.5</sub>, X-VLA, OpenV
 
 ### Real-World Experiments
 
-![Real World Results](https://raw.githubusercontent.com/floy4/IDR/main/images/fig_realworld_panels.png)
+![Real World Results](https://raw.githubusercontent.com/floy4/IDR/master/images/fig_realworld_panels.png)
 
 *Real-world efficiency-success trade-off. Success rate and average completion time are reported for each task. Arrows (Baseline → IDR) pointing upward/leftward indicate simultaneous improvements in both.*
 
@@ -73,7 +73,7 @@ We evaluate IDR on real-world manipulation tasks using a dual-arm ARX5 platform.
 
 ### Ablation Studies
 
-![Hyperparameter Ablation](https://raw.githubusercontent.com/floy4/IDR/main/images/ablation_on_hypers.png)
+![Hyperparameter Ablation](https://raw.githubusercontent.com/floy4/IDR/master/images/ablation_on_hypers.png)
 
 *Moderate correction scales and intervention thresholds yield the best performance, while excessive correction or uniform intervention degrades action generation.*
 
