@@ -1,0 +1,179 @@
+/* IDR Project Page Styles */
+
+body {
+  font-family: 'Noto Sans', 'Google Sans', sans-serif;
+  color: #333;
+}
+
+/* Top banner */
+.top-banner {
+  width: 100%;
+}
+
+/* Publication title */
+.publication-title {
+  font-family: 'Castoro', serif;
+}
+
+/* Author block */
+.author-block {
+  margin: 0 0.3em;
+}
+
+/* Affiliation line */
+.affiliation-line {
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Links */
+.publication-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.link-block {
+  display: inline-block;
+}
+
+.external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.external-link.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.external-link.is-disabled:hover {
+  transform: none;
+}
+
+/* Section blocks */
+.section-block {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* Table styling */
+.result-table {
+  margin: 1rem auto;
+  max-width: 100%;
+}
+
+.result-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.result-table td {
+  text-align: center;
+}
+
+/* Highlight our method */
+.ours-row {
+  background-color: #e8f5e9;
+  font-weight: 600;
+}
+
+/* Figure captions */
+.figure-caption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+/* Video placeholder */
+.video-placeholder {
+  background-color: #f5f5f5;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding: 80px 40px;
+  text-align: center;
+  color: #888;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+/* Method equation */
+.method-equation {
+  font-family: 'Times New Roman', serif;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* Demo case styling */
+.demo-case {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 8px;
+}
+
+.demo-video {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+.footer {
+  background-color: #fafafa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .publication-title {
+    font-size: 1.5rem;
+  }
+
+  .publication-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .result-table {
+    font-size: 0.85rem;
+  }
+}
+
+/* BibTeX styling */
+.bibtex-container pre {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+/* Acceptance badge */
+.acceptance-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.acceptance-badge.empty-badge {
+  background-color: #f0f0f0;
+  color: #888;
+}
+
+/* Publication acceptance section */
+.publication-acceptance {
+  margin: 1rem 0;
+}
