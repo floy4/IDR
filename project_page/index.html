@@ -48,9 +48,30 @@
     }
     table {
       font-size: 0.95rem;
+      border-collapse: collapse;
+      width: 100%;
     }
-    th {
-      background-color: #f5f5f5;
+    th, td {
+      text-align: center;
+      padding: 8px 12px;
+      border: none;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+    thead th {
+      background-color: #f8f8f8;
+      border-top: 2px solid #333;
+      border-bottom: 2px solid #333;
+      font-weight: bold;
+    }
+    tbody tr:last-child td {
+      border-bottom: 2px solid #333;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tbody tr:hover {
+      background-color: #f0f4f8;
     }
     .video-placeholder {
       background-color: #eee;
@@ -76,6 +97,15 @@
       opacity: 0.85;
       font-size: 1rem;
     }
+    .section-divider {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      color: #363636;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -83,31 +113,22 @@
 <!-- Top Banner - Combined Header -->
 <section class="top-banner" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px 30px;">
   <div style="text-align: center; color: white;">
-    <h1 style="font-size: 2.5rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 0.3rem;">
-      IDR Framework
+    <h1 style="font-size: 2rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 0.3rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.3;">
+      Causality-driven Infer-Diagnose-Refine Framework<br>for Test-time Adaptation in Vision-Language-Action Models
     </h1>
-    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 1.5rem;">Infer-Diagnose-Refine for Test-time Adaptation in VLA Models</p>
-
-    <h2 style="font-family: 'Castoro', serif; font-size: 1.6rem; font-weight: bold; margin-bottom: 0.5rem;">
-      Infer-Diagnose-Refine: Causality-driven Test-time Adaptation for Vision-Language-Action Models
-    </h2>
 
     <div style="font-size: 1.1rem; margin-bottom: 0.3rem;">
       <span class="author-block">Anonymous Authors</span>
     </div>
-    <div style="font-size: 0.95rem; margin-bottom: 1.2rem;">
+    <div style="font-size: 0.95rem; margin-bottom: 0.3rem;">
       <span class="affiliation-line">Institution information to be added</span>
     </div>
     <div style="font-size: 0.9rem; margin-bottom: 1.5rem; opacity: 0.8;">
       Venue / acceptance information to be added
     </div>
 
-    <!-- Buttons -->
+    <!-- Buttons: arXiv and Code only -->
     <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-      <a href="CF-VLA-paper-v9.pdf" class="button is-normal is-rounded is-danger" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);">
-        <span class="icon"><i class="fas fa-file-pdf"></i></span>
-        <span>Paper</span>
-      </a>
       <a href="#" class="button is-normal is-rounded is-light" style="opacity: 0.7;">
         <span class="icon"><i class="ai ai-arxiv"></i></span>
         <span>arXiv</span>
@@ -186,10 +207,54 @@
       </div>
     </div>
 
-    <!-- Observation 1: Modality Contribution Heatmap -->
+    <!-- Observations Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Observations from Test-Time Modality Diagnosis</h2>
+        <p class="has-text-justified" style="margin-bottom: 1.5rem;">
+          Through test-time causal inference across models and environments, we derive three key observations.
+          To compare visual effects across models and action scales, we compute the normalized visual effect ratio R<sub>img</sub> = E<sub>img</sub> / (E<sub>img</sub> + E<sub>prop</sub> + ε).
+        </p>
+      </div>
+    </div>
+
+    <!-- Observation 1: Environment shifts causal patterns -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Observation 1: Modality Contribution Analysis</h2>
+        <h3 class="title is-4 has-text-left">Observation 1: Deployment environments shift inherent causal effect patterns</h3>
+
+        <div class="table-container" style="margin-top: 1rem;">
+          <table class="table is-bordered is-striped is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Environment</th>
+                <th>Suite/Task</th>
+                <th>E<sub>img</sub></th>
+                <th>E<sub>prop</sub></th>
+                <th>R<sub>img</sub></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>LIBERO</td><td>All suites</td><td>0.67</td><td>1.59</td><td>29.7%</td></tr>
+              <tr><td>WidowX</td><td>Real-robot tasks</td><td>0.62</td><td>0.76</td><td>44.9%</td></tr>
+              <tr><td>CALVIN</td><td>ABC→D</td><td>0.61</td><td>0.60</td><td>50.7%</td></tr>
+              <tr><td>SIMPLER</td><td>Google Variant Aggregation</td><td>1.18</td><td>0.09</td><td>93.2%</td></tr>
+              <tr><td>SIMPLER</td><td>Google Visual Matching</td><td>0.99</td><td>0.07</td><td>93.8%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          The same VLA model (X-VLA) shifts its visual effect pattern substantially across different benchmarks or embodiments.
+          X-VLA is proprioception-primary in LIBERO but becomes vision-dominant in SIMPLER.
+          This environment-dependent shift suggests that modality balance is also associated with deployment environments.
+        </p>
+      </div>
+    </div>
+
+    <!-- Observation 2: Architecture shapes patterns -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4 has-text-left">Observation 2: Model architectures shape specific causal effect patterns</h3>
 
         <div class="figure-container">
           <img src="images/fig_baseline_model_suite_heatmap.png" alt="Model Suite Heatmap" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -197,308 +262,325 @@
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Heatmap figure to be added</p>
           </div>
-          <p class="figure-caption">Vision effect ratio across different VLA models and task suites in LIBERO. Counterfactual interventions reveal distinct modality-reliance regimes across representative VLA backbones.</p>
+          <p class="figure-caption">R<sub>img</sub> heatmap across models and LIBERO suites. Each model maintains a consistent visual effect pattern.</p>
         </div>
+
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          Within the same benchmark, different VLA models exhibit significantly different causal effect patterns.
+          This variation reflects architectural designs where models relying heavily on a dominant vision-language space maintain a higher R<sub>img</sub>, while architectures that inject proprioceptive states and action tokens earlier show stronger proprioceptive effects.
+          As shown in the figure, π<sub>0.5</sub> and OpenVLA-OFT are vision-heavy, X-VLA is proprioception-primary, and VLA-Adapter is vision-dominant.
+        </p>
       </div>
     </div>
 
-    <!-- Observation 2: Phase-dependent Modality Importance -->
+    <!-- Observation 3: Phase-dependent patterns -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Observation 2: Phase-dependent Modality Importance</h2>
+        <h3 class="title is-4 has-text-left">Observation 3: Manipulation phases dynamically alter causal effect patterns</h3>
 
         <div class="figure-container">
-          <img src="images/teaser_image3.png" alt="Phase Analysis" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="images/ablation_phase.png" alt="Phase-aligned Effect Ratio" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="video-placeholder" style="display: none;">
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Phase analysis figure to be added</p>
           </div>
-          <p class="figure-caption">Visual importance varies across different execution phases (Locate, Approach, Grasp, Transport, Place), suggesting the need for dynamic, phase-aware modality adaptation.</p>
+          <p class="figure-caption">Phase-aligned visual effect ratio on π<sub>0.5</sub>. The plot reports the visual effect ratio R<sub>img</sub> over task progress for the baseline, Mode E, and Mode F. Dashed vertical lines indicate gripper close and open events.</p>
         </div>
+
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          Within a single task execution, modality effects change with manipulation phases.
+          The baseline R<sub>img</sub> fluctuates with task progress and changes around gripper close/open events, highlighting the need for dynamic adaptation during execution.
+          Visual effect tends to increase during localization and placement, where external scene information is critical, while proprioceptive effect becomes more influential during motion-transition phases.
+        </p>
       </div>
     </div>
 
-    <!-- Observation 3: Model Architecture Differences -->
-    <div class="columns is-centered has-text-centered section-block">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Observation 3: Architecture-specific Modality Patterns</h2>
-
-        <div class="content has-text-left" style="margin-top: 1rem;">
-          <p>Different VLA architectures exhibit distinct reliance patterns:</p>
-          <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
-            <li><strong>OpenVLA-OFT:</strong> High vision reliance, stable across tasks</li>
-            <li><strong>π0.5:</strong> Balanced vision-proprioception, task-dependent variations</li>
-            <li><strong>X-VLA:</strong> Proprioception-dominant with context-sensitive vision use</li>
-            <li><strong>VLA-Adapter:</strong> Adaptive switching between modalities</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Simulation Results Header -->
+    <!-- Simulation Results Section -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-2" style="border-bottom: 3px solid #667eea; padding-bottom: 10px;">Simulation Benchmark Results</h2>
+        <h2 class="title is-3">Simulation Benchmark Results</h2>
       </div>
     </div>
 
     <!-- LIBERO Results -->
-    <div class="columns is-centered has-text-centered section-block" id="results">
+    <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
         <h3 class="title is-4">LIBERO Benchmark</h3>
 
-        <div class="content has-text-justified" style="text-align: justify;">
-          <p>IDR consistently improves reproduced baselines across four VLA backbones on LIBERO benchmark.</p>
-        </div>
-
-        <div class="table-container" style="margin-top: 1rem;">
+        <div class="table-container">
           <table class="table is-bordered is-striped is-fullwidth result-table">
             <thead>
               <tr>
-                <th>Backbone</th>
+                <th>Size</th>
+                <th>Method</th>
                 <th>Spatial</th>
                 <th>Object</th>
                 <th>Goal</th>
                 <th>Long</th>
-                <th>Average</th>
+                <th>Avg</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>OpenVLA-OFT</td>
-                <td>92.60%</td>
-                <td>99.20%</td>
-                <td>96.20%</td>
-                <td>94.60%</td>
-                <td>95.65%</td>
-              </tr>
-              <tr style="background-color: #e8f5e9;">
-                <td><strong>+IDR</strong></td>
-                <td><strong>94.20%</strong></td>
-                <td><strong>99.20%</strong></td>
-                <td><strong>98.00%</strong></td>
-                <td><strong>94.80%</strong></td>
-                <td><strong>96.55% (+0.90%)</strong></td>
-              </tr>
-              <tr>
-                <td>π0.5</td>
-                <td>97.50%</td>
-                <td>95.00%</td>
-                <td>97.00%</td>
-                <td>95.50%</td>
-                <td>96.25%</td>
-              </tr>
-              <tr style="background-color: #e8f5e9;">
-                <td><strong>+IDR</strong></td>
-                <td><strong>98.00%</strong></td>
-                <td><strong>100.00%</strong></td>
-                <td><strong>97.00%</strong></td>
-                <td><strong>95.00%</strong></td>
-                <td><strong>97.50% (+1.25%)</strong></td>
-              </tr>
-              <tr>
-                <td>X-VLA</td>
-                <td>92.60%</td>
-                <td>99.20%</td>
-                <td>98.00%</td>
-                <td>94.40%</td>
-                <td>96.05%</td>
-              </tr>
-              <tr style="background-color: #e8f5e9;">
-                <td><strong>+IDR</strong></td>
-                <td><strong>95.00%</strong></td>
-                <td><strong>100.00%</strong></td>
-                <td><strong>93.00%</strong></td>
-                <td><strong>93.00%</strong></td>
-                <td><strong>96.50% (+0.45%)</strong></td>
-              </tr>
-              <tr>
-                <td>VLA-Adapter</td>
-                <td>94.20%</td>
-                <td>95.60%</td>
-                <td>98.00%</td>
-                <td>92.60%</td>
-                <td>95.10%</td>
-              </tr>
-              <tr style="background-color: #e8f5e9;">
-                <td><strong>+IDR</strong></td>
-                <td><strong>97.00%</strong></td>
-                <td><strong>100.00%</strong></td>
-                <td><strong>96.00%</strong></td>
-                <td><strong>94.00%</strong></td>
-                <td><strong>96.50% (+1.40%)</strong></td>
-              </tr>
+              <tr><td rowspan="2"><strong>Large (≥4B)</strong></td><td>OpenVLA-OFT</td><td>92.60</td><td>99.20</td><td>96.20</td><td>94.60</td><td>95.65</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>94.20</strong></td><td><strong>99.20</strong></td><td><strong>98.00</strong></td><td><strong>94.80</strong></td><td><strong>96.55</strong></td></tr>
+              <tr><td rowspan="2"><strong>Small (&lt;4B)</strong></td><td>π<sub>0.5</sub></td><td>97.50</td><td>95.00</td><td>97.00</td><td>95.50</td><td>96.25</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>98.00</strong></td><td><strong>100.00</strong></td><td><strong>97.00</strong></td><td><strong>95.00</strong></td><td><strong>97.50</strong></td></tr>
+              <tr><td rowspan="4"><strong>Tiny (&lt;1B)</strong></td><td>X-VLA</td><td>92.60</td><td>99.20</td><td>98.00</td><td>94.40</td><td>96.05</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>95.00</strong></td><td><strong>100.00</strong></td><td><strong>93.00</strong></td><td><strong>93.00</strong></td><td><strong>96.50</strong></td></tr>
+              <tr><td>VLA-Adapter</td><td>94.20</td><td>95.60</td><td>98.00</td><td>92.60</td><td>95.10</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>97.00</strong></td><td><strong>100.00</strong></td><td><strong>96.00</strong></td><td><strong>94.00</strong></td><td><strong>96.50</strong></td></tr>
             </tbody>
           </table>
         </div>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          IDR consistently improves all four VLA backbones. The largest gains are observed on VLA-Adapter (+1.40) and π<sub>0.5</sub> (+1.25), where the visual-effect-guided adaptation provides the most benefit.
+        </p>
       </div>
     </div>
 
     <!-- CALVIN Results -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h3 class="title is-4">CALVIN Benchmark</h3>
+        <h3 class="title is-4">CALVIN (ABC→D) Benchmark</h3>
 
         <div class="table-container">
           <table class="table is-bordered is-striped is-fullwidth result-table">
             <thead>
               <tr>
                 <th>Method</th>
-                <th>Average Task Length</th>
-                <th>Improvement</th>
+                <th>1/5</th>
+                <th>2/5</th>
+                <th>3/5</th>
+                <th>4/5</th>
+                <th>5/5</th>
+                <th>Avg Len</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Baseline</td>
-                <td>4.22</td>
-                <td>—</td>
-              </tr>
-              <tr style="background-color: #e8f5e9;">
-                <td><strong>+IDR</strong></td>
-                <td><strong>4.44</strong></td>
-                <td><strong>+0.22 (+5.2%)</strong></td>
-              </tr>
+              <tr><td>X-VLA</td><td>95.7</td><td>90.9</td><td>86.0</td><td>78.8</td><td>70.5</td><td>4.22</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>98.1</strong></td><td><strong>94.2</strong></td><td><strong>89.9</strong></td><td><strong>84.3</strong></td><td><strong>77.3</strong></td><td><strong>4.44</strong></td></tr>
+              <tr><td>VLA-Adapter</td><td>97.1</td><td>93.8</td><td>88.8</td><td>82.5</td><td>76.4</td><td>4.39</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>97.7</strong></td><td><strong>94.1</strong></td><td><strong>89.3</strong></td><td><strong>83.8</strong></td><td><strong>77.8</strong></td><td><strong>4.43</strong></td></tr>
             </tbody>
           </table>
         </div>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          On CALVIN, IDR improves both the average completed length (from 4.22 to 4.44) and the 5/5 completion rate (from 70.5% to 77.3%), demonstrating its effectiveness in long-horizon execution.
+        </p>
       </div>
     </div>
 
     <!-- Simpler Results -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h3 class="title is-4">Simpler Benchmark</h3>
+        <h3 class="title is-4">SIMPLER Benchmark (on X-VLA)</h3>
 
         <div class="table-container">
           <table class="table is-bordered is-striped is-fullwidth result-table">
             <thead>
               <tr>
-                <th>Robot</th>
-                <th>Baseline</th>
-                <th>+IDR</th>
-                <th>Improvement</th>
+                <th>Environment</th>
+                <th>Method</th>
+                <th>Blocks</th>
+                <th>Eggplant</th>
+                <th>Spoon</th>
+                <th>Place</th>
+                <th>Avg</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Simpler VA</td>
-                <td>75.88%</td>
-                <td>78.90%</td>
-                <td>+3.02%</td>
-              </tr>
-              <tr>
-                <td>Simpler VM</td>
-                <td>81.15%</td>
-                <td>82.13%</td>
-                <td>+0.98%</td>
-              </tr>
-              <tr>
-                <td>Simpler WidowX</td>
-                <td>93.75%</td>
-                <td>95.83%</td>
-                <td>+2.08%</td>
-              </tr>
+              <tr><td rowspan="2">Google VM</td><td>X-VLA</td><td>98.33</td><td>97.08</td><td>71.76</td><td>57.41</td><td>81.15</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>96.67</strong></td><td><strong>96.67</strong></td><td><strong>75.92</strong></td><td><strong>59.26</strong></td><td><strong>82.13</strong></td></tr>
+              <tr><td rowspan="2">Google VA</td><td>X-VLA</td><td>86.25</td><td>83.83</td><td>60.95</td><td>59.26</td><td>75.88</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>89.63</strong></td><td><strong>83.80</strong></td><td><strong>68.10</strong></td><td><strong>74.07</strong></td><td><strong>78.90</strong></td></tr>
+              <tr><td rowspan="2">WidowX</td><td>X-VLA</td><td>75.00</td><td>100.00</td><td>100.00</td><td>100.00</td><td>93.75</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>+IDR</strong></td><td><strong>87.50</strong></td><td><strong>100.00</strong></td><td><strong>100.00</strong></td><td><strong>95.80</strong></td><td><strong>95.83</strong></td></tr>
             </tbody>
           </table>
         </div>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          On SIMPLER, the largest gain is achieved in the Variant Aggregation (VA) setting (+3.02), where visually grounded manipulation is particularly critical.
+        </p>
       </div>
     </div>
 
-    <!-- Real World Results Header -->
+    <!-- Real World Results Section -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-2" style="border-bottom: 3px solid #667eea; padding-bottom: 10px;">Real-World Experiment Results</h2>
+        <h2 class="title is-3">Real-World Experiment Results</h2>
+        <p class="has-text-justified" style="margin-bottom: 1rem;">
+          We evaluate IDR on real-world manipulation tasks using a dual-arm ARX5 platform.
+          The evaluation tasks cover four task categories with different manipulation challenges.
+        </p>
       </div>
     </div>
 
-    <!-- Real World Results Images -->
+    <!-- Real World Results Figure -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
         <div class="figure-container">
-          <img src="images/real_results.png" alt="Real World Results" style="width: 800px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="images/fig_realworld_panels.png" alt="Real World Results" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="video-placeholder" style="display: none;">
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Real world results figure to be added</p>
           </div>
-          <p class="figure-caption">Real-world experiments on pick-and-place, deformable object manipulation, and long-horizon desk organization tasks.</p>
+          <p class="figure-caption">Real-world efficiency--success trade-off. Success rate and average completion time are reported for each task. Arrows (Baseline → IDR) pointing upward/leftward indicate simultaneous improvements in both.</p>
         </div>
       </div>
     </div>
 
-    <!-- Organize Table Multi-step Results -->
+    <!-- Grab Cola, Fold Clothes, Sweeping Results -->
     <div class="columns is-centered has-text-centered section-block">
       <div class="column is-four-fifths">
-        <h3 class="title is-4">Organize Table: Multi-step Manipulation Results</h3>
-
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-fullwidth result-table">
-            <thead>
-              <tr>
-                <th>Task Level</th>
-                <th>Baseline (steps)</th>
-                <th>+IDR (steps)</th>
-                <th>Improvement</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Level 1 (2 steps)</td>
-                <td>2.0 avg</td>
-                <td>2.0 avg</td>
-                <td>—</td>
-              </tr>
-              <tr>
-                <td>Level 2 (3 steps)</td>
-                <td>2.5 avg</td>
-                <td>2.8 avg</td>
-                <td>+12%</td>
-              </tr>
-              <tr style="background-color: #e8f5e9;">
-                <td><strong>Level 3 (4 steps)</strong></td>
-                <td><strong>2.3 avg</strong></td>
-                <td><strong>4.0 avg</strong></td>
-                <td><strong>+74%</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Real World Task Details -->
-    <div class="columns is-centered has-text-centered section-block">
-      <div class="column is-four-fifths">
-        <h3 class="title is-4">Detailed Real-World Task Performance</h3>
+        <h3 class="title is-4">Performance on Folding Clothes, Grab Cola and Sweeping</h3>
 
         <div class="table-container">
           <table class="table is-bordered is-striped is-fullwidth result-table">
             <thead>
               <tr>
                 <th>Task</th>
-                <th>Baseline</th>
-                <th>+IDR</th>
-                <th>Improvement</th>
-                <th>Time Reduction</th>
+                <th>Level</th>
+                <th>Method</th>
+                <th>Succ. (%)</th>
+                <th>Avg. Time</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Grab Cola L1</td><td>95.8%</td><td>100%</td><td>+4.2%</td><td>8.4s → 8.2s</td></tr>
-              <tr><td>Grab Cola L2</td><td>66.7%</td><td>91.7%</td><td>+25.0%</td><td>14.6s → 13.4s</td></tr>
-              <tr><td>Fold Clothes L1</td><td>66.7%</td><td>91.7%</td><td>+25.0%</td><td>47s → 37s</td></tr>
-              <tr><td>Fold Clothes L2</td><td>75.0%</td><td>91.7%</td><td>+16.7%</td><td>46s → 42s</td></tr>
-              <tr><td>Fold Clothes L3</td><td>8.3%</td><td>33.3%</td><td>+25.0%</td><td>222s → 155s</td></tr>
-              <tr><td>Sweep Trash</td><td>46.9%</td><td>68.8%</td><td>+21.9%</td><td>16.0s → 15.9s</td></tr>
+              <!-- Grab Cola -->
+              <tr>
+                <td rowspan="6"><strong>Grab Cola</strong></td>
+                <td rowspan="2">Level 1</td>
+                <td>Baseline</td>
+                <td>95.8</td>
+                <td style="font-weight: bold;">8.4s</td>
+              </tr>
+              <tr>
+                <td>Ours</td>
+                <td style="background-color: #e8f5e9;"><strong>100.0</strong></td>
+                <td>8.7s</td>
+              </tr>
+              <tr style="border-top: 2px solid #ddd;">
+                <td rowspan="2">Level 2</td>
+                <td>Baseline</td>
+                <td>66.7</td>
+                <td>14.3s</td>
+              </tr>
+              <tr>
+                <td>Ours</td>
+                <td style="background-color: #e8f5e9;"><strong>91.7</strong></td>
+                <td style="background-color: #e8f5e9;"><strong>13.4s</strong></td>
+              </tr>
+              <tr style="border-top: 2px solid #ddd;">
+                <td rowspan="2">Level 3</td>
+                <td>Baseline</td>
+                <td style="font-weight: bold;">91.7</td>
+                <td>21.3s</td>
+              </tr>
+              <tr>
+                <td>Ours</td>
+                <td style="background-color: #e8f5e9;"><strong>91.7</strong></td>
+                <td style="background-color: #e8f5e9;"><strong>19.2s</strong></td>
+              </tr>
+              <!-- Folding Clothes -->
+              <tr style="border-top: 2px solid #999;">
+                <td rowspan="6"><strong>Folding Clothes</strong></td>
+                <td rowspan="2">Level 1</td>
+                <td>Baseline</td>
+                <td>66.7</td>
+                <td>47s</td>
+              </tr>
+              <tr>
+                <td>Ours</td>
+                <td style="background-color: #e8f5e9;"><strong>91.7</strong></td>
+                <td style="background-color: #e8f5e9;"><strong>37s</strong></td>
+              </tr>
+              <tr style="border-top: 2px solid #ddd;">
+                <td rowspan="2">Level 2</td>
+                <td>Baseline</td>
+                <td>83.3</td>
+                <td>52s</td>
+              </tr>
+              <tr>
+                <td>Ours</td>
+                <td style="background-color: #e8f5e9;"><strong>91.7</strong></td>
+                <td style="background-color: #e8f5e9;"><strong>47s</strong></td>
+              </tr>
+              <tr style="border-top: 2px solid #ddd;">
+                <td rowspan="2">Level 3</td>
+                <td>Baseline</td>
+                <td>8.3</td>
+                <td>222s</td>
+              </tr>
+              <tr>
+                <td>Ours</td>
+                <td style="background-color: #e8f5e9;"><strong>33.3</strong></td>
+                <td style="background-color: #e8f5e9;"><strong>155s</strong></td>
+              </tr>
+              <!-- Sweeping -->
+              <tr style="border-top: 2px solid #999;">
+                <td rowspan="2"><strong>Sweeping</strong></td>
+                <td rowspan="2">—</td>
+                <td>Baseline</td>
+                <td>59.4</td>
+                <td>16.0s</td>
+              </tr>
+              <tr>
+                <td>Ours</td>
+                <td style="background-color: #e8f5e9;"><strong>68.8</strong></td>
+                <td style="background-color: #e8f5e9;"><strong>15.9s</strong></td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- Ablation Experiments Header -->
+    <!-- Organize Table Results (placed after the figure) -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Organize Table: Long-horizon Sequential Task</h3>
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th colspan="5">Tasks Completed in a Row</th>
+                <th></th>
+              </tr>
+              <tr>
+                <th>Method</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>Avg Len ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Baseline</td><td>83.3%</td><td>66.7%</td><td>33.3%</td><td>33.3%</td><td>0.0%</td><td>2.167</td></tr>
+              <tr style="background-color: #e8f5e9;"><td><strong>Ours</strong></td><td><strong>100.0%</strong></td><td><strong>100.0%</strong></td><td><strong>100.0%</strong></td><td><strong>66.7%</strong></td><td><strong>33.3%</strong></td><td><strong>4.000</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          On the challenging 5-step Organize Table task, IDR achieves a 33.3% full-completion rate compared with 0% for the baseline, while increasing the average completed steps from 2.17 to 4.00 out of 5.
+        </p>
+      </div>
+    </div>
+
+    <div>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          Overall, IDR improves manipulation performance across various real-world tasks, particularly on challenging tasks requiring fine-grained visual guidance and contact-rich manipulation.
+        </p>
+    </div>
+  
+
+    <!-- Ablation Studies Section -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-2" style="border-bottom: 3px solid #667eea; padding-bottom: 10px;">Ablation Studies</h2>
+        <h2 class="title is-3">Ablation Studies</h2>
       </div>
     </div>
 
@@ -513,27 +595,12 @@
             <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <p>Ablation figure to be added</p>
           </div>
-          <p class="figure-caption">Moderate correction scales and intervention thresholds yield the best performance on π0.5 + LIBERO.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Phase Ablation -->
-    <div class="columns is-centered has-text-centered section-block">
-      <div class="column is-four-fifths">
-        <h3 class="title is-4">Phase-dependent Intervention</h3>
-
-        <div class="figure-container">
-          <img src="images/ablation_phase.png" alt="Phase Ablation" style="width: 700px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <div class="video-placeholder" style="display: none;">
-            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-            <p>Phase analysis figure to be added</p>
-          </div>
-          <p class="figure-caption">Selective intervention during motion-transition phases yields better performance than uniform intervention.</p>
+          <p class="figure-caption">Moderate correction scales and intervention thresholds yield the best performance, while excessive correction or uniform intervention degrades action generation.</p>
         </div>
 
         <div class="content has-text-justified" style="text-align: justify;">
-          <p>IDR shows that selective intervention during motion-transition phases (grasp, place) yields better performance than uniform intervention across all phases. This supports the need for dynamic, phase-aware modality adaptation.</p>
+          <p><strong>Correction scale (α):</strong> Performance peaks at α=0.08, while nearby values such as α=0.05, 0.10 produce comparable results. Larger values (α ≥ 0.5) degrade performance, indicating that excessive visual-effect correction can destabilize action generation.</p>
+          <p><strong>Intervention threshold (τ):</strong> Small values rarely activate the gate, and therefore provide limited improvement. Uniform intervention with τ=999 performs below the baseline. The best performance is obtained at τ=7, where refinement is applied only to predictions with low diagnosed visual effect.</p>
         </div>
       </div>
     </div>
@@ -546,31 +613,14 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Demo Videos</h2>
     <p class="has-text-centered" style="margin-bottom: 2rem; color: #666;">
-      (Video content to be added - placeholder for cola, sweep, drawer, and clothes manipulation demos)
-    </p>
-
-    <!-- Placeholder for videos -->
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <div class="video-placeholder">
-          <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-          <p>Real-world manipulation videos to be added</p>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem;"> cola | sweep | drawer | clothes</p>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Simulation Benchmark Demos</h3>
-    <p class="has-text-centered" style="margin-bottom: 2rem; color: #666;">
-      (LIBERO, Simpler, CALVIN simulation rollouts to be added)
+      (Video content to be added)
     </p>
 
     <div class="columns is-centered">
       <div class="column is-two-thirds">
         <div class="video-placeholder">
           <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-          <p>Simulation benchmark videos to be added</p>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem;">LIBERO | Simpler | CALVIN</p>
+          <p>Real-world manipulation and simulation benchmark videos to be added</p>
         </div>
       </div>
     </div>
@@ -583,7 +633,7 @@
     <h2 class="title is-3 has-text-centered">BibTeX</h2>
     <div class="bibtex-container">
       <pre><code>@article{idr2026,
-  title={Infer-Diagnose-Refine: Causality-driven Test-time Adaptation for Vision-Language-Action Models},
+  title={Causality-driven Infer-Diagnose-Refine Framework for Test-time Adaptation in Vision-Language-Action Models},
   author={Anonymous Authors},
   journal={Manuscript},
   year={2026}
