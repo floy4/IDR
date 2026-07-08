@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="IDR: Infer-Diagnose-Refine Framework for Test-time Adaptation in VLA Models">
+  <meta name="keywords" content="VLA, Robotics, Vision-Language-Action, Causal Inference, Test-time Adaptation, Robot Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDR: Infer-Diagnose-Refine Framework for Test-time Adaptation in VLA Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Noto Sans', 'Google Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .publication-title {
+      font-family: 'Castoro', serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #363636;
+    }
+    .figure-container {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    .figure-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    .figure-caption {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    table {
+      font-size: 0.95rem;
+    }
+    th {
+      background-color: #f5f5f5;
+    }
+    .video-placeholder {
+      background-color: #eee;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 60px 20px;
+      text-align: center;
+      color: #888;
+      margin: 20px 0;
+    }
+    .bibtex-container {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Banner -->
+<section class="top-banner" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 200px; display: flex; align-items: center; justify-content: center;">
+  <div style="text-align: center; color: white;">
+    <h1 style="font-size: 2.5rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+      IDR Framework
+    </h1>
+    <p style="font-size: 1.2rem; opacity: 0.9;">Infer-Diagnose-Refine for Test-time Adaptation in VLA Models</p>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-2 publication-title" style="font-size: 2rem; margin-top: 1rem;">
+            Infer-Diagnose-Refine: Causality-driven Test-time Adaptation for Vision-Language-Action Models
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+
+          <div class="is-size-5 publication-authors affiliation-line">
+            <span class="author-block">Institution information to be added</span>
+          </div>
+
+          <div class="publication-acceptance">
+            <span class="acceptance-badge empty-badge">Venue / acceptance information to be added</span>
+          </div>
+
+          <div class="column has-text-centered" style="margin-top: 1.5rem;">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="CF-VLA-paper-v9.pdf" class="external-link button is-normal is-rounded is-danger">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper PDF</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-light is-disabled" aria-disabled="true">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv TBD</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled" aria-disabled="true">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code TBD</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled" aria-disabled="true">
+                  <span class="icon"><span class="hf-icon">HF</span></span>
+                  <span>Models TBD</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+          <!-- Teaser Image -->
+          <div class="figure-container" style="margin-top: 2rem;">
+            <img src="images/teaser_image3.pdf" alt="IDR Framework Overview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="video-placeholder" style="display: none;">
+              <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+              <p>Teaser figure to be added</p>
+            </div>
+            <p class="figure-caption">IDR Framework: Existing VLA models directly produce actions from multimodal fusion. IDR infers factual/counterfactual outputs, diagnoses causal effects, and refines actions without retraining.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified" style="text-align: justify; font-size: 1.05rem; line-height: 1.8;">
+          <p>
+            Vision-language-action (VLA) models predict sequential actions to execute tasks specified by language instructions, conditioned on visual observations and proprioceptive states.
+            However, existing models typically perform static multi-modal fusion across all inputs for action generation, overlooking the varying importance of visual observations during the dynamic execution process.
+          </p>
+          <p>
+            In this paper, we propose an <strong>Infer-Diagnose-Refine (IDR)</strong> framework, a model-agnostic paradigm that can be seamlessly integrated with any VLA model at test time.
+            IDR first infers actions under factual and counterfactual scenarios of visual observations, and then diagnoses the causal effects of visual observations as the estimated dynamic importance, which is finally used to refine the initial action predictions in a training-free manner.
+            Extensive experiments on both simulation benchmarks and real-world tasks yield consistent performance gains across multiple VLA models.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Method Overview -->
+    <div class="columns is-centered has-text-centered section-block" id="method">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method Overview</h2>
+
+        <div class="figure-container">
+          <img src="images/method2.pdf" alt="IDR Method" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="video-placeholder" style="display: none;">
+            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Method figure to be added</p>
+          </div>
+          <p class="figure-caption">IDR Framework Architecture: Zero-padding interventions for counterfactual inference, norm-based effect quantification, and gated residual fusion.</p>
+        </div>
+
+        <div class="content has-text-justified" style="text-align: justify; margin-top: 1.5rem;">
+          <h3 class="title is-4" style="text-align: left;">Key Components</h3>
+
+          <p><strong>Infer:</strong> IDR constructs counterfactual inputs through zero-padding interventions, enabling the frozen VLA model to infer factual and counterfactual outputs under different modality conditions.</p>
+
+          <p><strong>Diagnose:</strong> The changes of outputs are quantified with a norm-based effect measurement to diagnose the dynamic importance of visual observations.</p>
+
+          <p><strong>Refine:</strong> The diagnosed effects are integrated with the initial action prediction through gated residual fusion, producing a refined action while preserving low-level control stability.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Causal Graph -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Causal Analysis</h2>
+
+        <div class="figure-container">
+          <img src="images/causal_graph.pdf" alt="Causal Graph" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="video-placeholder" style="display: none;">
+            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Causal graph figure to be added</p>
+          </div>
+          <p class="figure-caption">Causal graph illustrating the modality intervention framework.</p>
+        </div>
+
+        <div class="content has-text-justified" style="text-align: justify;">
+          <p>IDR treats visual importance as a dynamic factor during execution, diagnoses how visual observations causally affect the current prediction, and refines the action accordingly.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modality Analysis -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Modality Contribution Analysis</h2>
+
+        <div class="figure-container">
+          <img src="images/fig_baseline_model_suite_heatmap.pdf" alt="Model Suite Heatmap" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="video-placeholder" style="display: none;">
+            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Heatmap figure to be added</p>
+          </div>
+          <p class="figure-caption">Vision effect ratio across different VLA models and task suites in LIBERO.</p>
+        </div>
+
+        <div class="content has-text-justified" style="text-align: justify;">
+          <p>Counterfactual interventions reveal distinct modality-reliance regimes across representative VLA backbones. Different VLA architectures exhibit distinct reliance patterns, ranging from vision-heavy to proprioception-dominant behavior.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIBERO Results -->
+    <div class="columns is-centered has-text-centered section-block" id="results">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">LIBERO Benchmark Results</h2>
+
+        <div class="content has-text-justified" style="text-align: justify;">
+          <p>IDR consistently improves reproduced baselines across four VLA backbones on LIBERO benchmark.</p>
+        </div>
+
+        <div class="table-container" style="margin-top: 1rem;">
+          <table class="table is-bordered is-striped is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Backbone</th>
+                <th>Spatial</th>
+                <th>Object</th>
+                <th>Goal</th>
+                <th>Long</th>
+                <th>Average</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OpenVLA-OFT</td>
+                <td>92.60%</td>
+                <td>99.20%</td>
+                <td>96.20%</td>
+                <td>94.60%</td>
+                <td>95.65%</td>
+              </tr>
+              <tr style="background-color: #e8f5e9;">
+                <td><strong>+IDR</strong></td>
+                <td><strong>94.20%</strong></td>
+                <td><strong>99.20%</strong></td>
+                <td><strong>98.00%</strong></td>
+                <td><strong>94.80%</strong></td>
+                <td><strong>96.55% (+0.90%)</strong></td>
+              </tr>
+              <tr>
+                <td>π0.5</td>
+                <td>97.50%</td>
+                <td>95.00%</td>
+                <td>97.00%</td>
+                <td>95.50%</td>
+                <td>96.25%</td>
+              </tr>
+              <tr style="background-color: #e8f5e9;">
+                <td><strong>+IDR</strong></td>
+                <td><strong>98.00%</strong></td>
+                <td><strong>100.00%</strong></td>
+                <td><strong>97.00%</strong></td>
+                <td><strong>95.00%</strong></td>
+                <td><strong>97.50% (+1.25%)</strong></td>
+              </tr>
+              <tr>
+                <td>X-VLA</td>
+                <td>92.60%</td>
+                <td>99.20%</td>
+                <td>98.00%</td>
+                <td>94.40%</td>
+                <td>96.05%</td>
+              </tr>
+              <tr style="background-color: #e8f5e9;">
+                <td><strong>+IDR</strong></td>
+                <td><strong>95.00%</strong></td>
+                <td><strong>100.00%</strong></td>
+                <td><strong>93.00%</strong></td>
+                <td><strong>93.00%</strong></td>
+                <td><strong>96.50% (+0.45%)</strong></td>
+              </tr>
+              <tr>
+                <td>VLA-Adapter</td>
+                <td>94.20%</td>
+                <td>95.60%</td>
+                <td>98.00%</td>
+                <td>92.60%</td>
+                <td>95.10%</td>
+              </tr>
+              <tr style="background-color: #e8f5e9;">
+                <td><strong>+IDR</strong></td>
+                <td><strong>97.00%</strong></td>
+                <td><strong>100.00%</strong></td>
+                <td><strong>96.00%</strong></td>
+                <td><strong>94.00%</strong></td>
+                <td><strong>96.50% (+1.40%)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real World Results -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Real-World Experiment Results</h2>
+
+        <div class="figure-container">
+          <img src="images/real_env2.pdf" alt="Real World Setup" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="video-placeholder" style="display: none;">
+            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Real world setup figure to be added</p>
+          </div>
+        </div>
+
+        <div class="figure-container">
+          <img src="images/real_results.pdf" alt="Real World Results" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="video-placeholder" style="display: none;">
+            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Real world results figure to be added</p>
+          </div>
+          <p class="figure-caption">Real-world experiments on pick-and-place, deformable object manipulation, and long-horizon desk organization tasks.</p>
+        </div>
+
+        <div class="table-container" style="margin-top: 1rem;">
+          <table class="table is-bordered is-striped is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Baseline</th>
+                <th>+IDR</th>
+                <th>Improvement</th>
+                <th>Time Reduction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Grab Cola L1</td><td>95.8%</td><td>100%</td><td>+4.2%</td><td>8.4s → 8.2s</td></tr>
+              <tr><td>Grab Cola L2</td><td>66.7%</td><td>91.7%</td><td>+25.0%</td><td>14.6s → 13.4s</td></tr>
+              <tr><td>Fold Clothes L1</td><td>66.7%</td><td>91.7%</td><td>+25.0%</td><td>47s → 37s</td></tr>
+              <tr><td>Fold Clothes L2</td><td>75.0%</td><td>91.7%</td><td>+16.7%</td><td>46s → 42s</td></tr>
+              <tr><td>Fold Clothes L3</td><td>8.3%</td><td>33.3%</td><td>+25.0%</td><td>222s → 155s</td></tr>
+              <tr><td>Sweep Trash</td><td>46.9%</td><td>68.8%</td><td>+21.9%</td><td>16.0s → 15.9s</td></tr>
+              <tr><td>Organize Desk (steps)</td><td>2.3 avg</td><td>4.0 avg</td><td>+74%</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ablation Study -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Hyperparameter Ablation</h2>
+
+        <div class="figure-container">
+          <img src="images/ablation_on_hypers.pdf" alt="Hyperparameter Ablation" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="video-placeholder" style="display: none;">
+            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Ablation figure to be added</p>
+          </div>
+          <p class="figure-caption">Moderate correction scales and intervention thresholds yield the best performance on π0.5 + LIBERO.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase Analysis -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Phase-dependent Intervention</h2>
+
+        <div class="figure-container">
+          <img src="images/ablation_phase.pdf" alt="Phase Ablation" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="video-placeholder" style="display: none;">
+            <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+            <p>Phase analysis figure to be added</p>
+          </div>
+          <p class="figure-caption">Selective intervention during motion-transition phases yields better performance than uniform intervention.</p>
+        </div>
+
+        <div class="content has-text-justified" style="text-align: justify;">
+          <p>IDR shows that selective intervention during motion-transition phases (grasp, place) yields better performance than uniform intervention across all phases. This supports the need for dynamic, phase-aware modality adaptation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simpler & CALVIN Results -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Simpler and CALVIN Benchmark Results</h2>
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Benchmark</th>
+                <th>Baseline</th>
+                <th>+IDR</th>
+                <th>Improvement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Simpler VA Average</td><td>75.88%</td><td>78.90%</td><td>+3.02%</td></tr>
+              <tr><td>Simpler VM Average</td><td>81.15%</td><td>82.13%</td><td>+0.98%</td></tr>
+              <tr><td>Simpler WidowX Average</td><td>93.75%</td><td>95.83%</td><td>+2.08%</td></tr>
+              <tr><td>CALVIN Average Length</td><td>4.22</td><td>4.44</td><td>+0.22</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Video Section -->
+<section class="section" style="background-color: #f9f9f9;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Demo Videos</h2>
+    <p class="has-text-centered" style="margin-bottom: 2rem; color: #666;">
+      (Video content to be added - placeholder for cola, sweep, drawer, and clothes manipulation demos)
+    </p>
+
+    <!-- Placeholder for videos -->
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="video-placeholder">
+          <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+          <p>Real-world manipulation videos to be added</p>
+          <p style="font-size: 0.9rem; margin-top: 0.5rem;"> cola | sweep | drawer | clothes</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Simulation Benchmark Demos</h3>
+    <p class="has-text-centered" style="margin-bottom: 2rem; color: #666;">
+      (LIBERO, Simpler, CALVIN simulation rollouts to be added)
+    </p>
+
+    <div class="columns is-centered">
+      <div class="column is-two-thirds">
+        <div class="video-placeholder">
+          <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+          <p>Simulation benchmark videos to be added</p>
+          <p style="font-size: 0.9rem; margin-top: 0.5rem;">LIBERO | Simpler | CALVIN</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+    <div class="bibtex-container">
+      <pre><code>@article{idr2026,
+  title={Infer-Diagnose-Refine: Causality-driven Test-time Adaptation for Vision-Language-Action Models},
+  author={Anonymous Authors},
+  journal={Manuscript},
+  year={2026}
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" style="padding: 2rem 1.5rem;">
+  <div class="content has-text-centered">
+    <p>
+      <strong>IDR Framework</strong> — Test-time Adaptation for VLA Models
+    </p>
+    <p style="color: #888; font-size: 0.9rem;">
+      Project Page Template based on the IDR paper
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
