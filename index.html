@@ -112,6 +112,48 @@
       border-bottom: 3px solid #667eea;
       padding-bottom: 10px;
     }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .video-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .video-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .video-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+    .video-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .video-comparison-item {
+      text-align: center;
+    }
+    .video-comparison-item img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .success-label {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .fail-label {
+      color: #c62828;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -410,6 +452,142 @@
         <p class="has-text-justified" style="margin-top: 1rem;">
           On SIMPLER, the largest gain is achieved in the Variant Aggregation (VA) setting (+3.02), where visually grounded manipulation is particularly critical.
         </p>
+      </div>
+    </div>
+
+    <!-- Simulation Benchmark Comparison Videos -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">LIBERO Benchmark Comparison</h3>
+        <p class="has-text-justified" style="margin-bottom: 1rem;">
+          Comparison of baseline (left) vs IDR (right) on LIBERO tasks. Each pair shows failure case without IDR and success case with IDR.
+        </p>
+
+        <div class="video-grid">
+          <!-- π₀.₅ -->
+          <div class="video-card">
+            <h4 style="text-align: center; margin-bottom: 0.5rem;">π<sub>0.5</sub></h4>
+            <div class="video-comparison">
+              <div class="video-comparison-item">
+                <img src="videos/libero_pi05_roll_put_both_moka_pots_on_the_stove_failure.gif" alt="π05 Baseline Failed">
+                <p class="video-label fail-label">Baseline - Failed</p>
+              </div>
+              <div class="video-comparison-item">
+                <img src="videos/libero_pi05_CF_put_both_moka_pots_on_the_stove_success.gif" alt="π05 IDR Successful">
+                <p class="video-label success-label">+IDR - Successful</p>
+              </div>
+            </div>
+            <p class="video-label">Put both moka pots on the stove</p>
+          </div>
+
+          <!-- OpenVLA-OFT -->
+          <div class="video-card">
+            <h4 style="text-align: center; margin-bottom: 0.5rem;">OpenVLA-OFT</h4>
+            <div class="video-comparison">
+              <div class="video-comparison-item">
+                <img src="videos/libero_openvla_oft_put_both_the_alphabet_soup_and_the_tomato_sauce_in_fail.gif" alt="OpenVLA Baseline Failed">
+                <p class="video-label fail-label">Baseline - Failed</p>
+              </div>
+              <div class="video-comparison-item">
+                <img src="videos/libero_openvla_oft_CF_put_both_the_alphabet_soup_and_the_tomato_sauce_in_success.gif" alt="OpenVLA IDR Successful">
+                <p class="video-label success-label">+IDR - Successful</p>
+              </div>
+            </div>
+            <p class="video-label">Put both the alphabet soup and the tomato sauce in the basket</p>
+          </div>
+
+          <!-- VLA-Adapter -->
+          <div class="video-card">
+            <h4 style="text-align: center; margin-bottom: 0.5rem;">VLA-Adapter</h4>
+            <div class="video-comparison">
+              <div class="video-comparison-item">
+                <img src="videos/libero_VLA-Adapter_put_the_yellow_and_white_mug_in_the_microwave_fail.gif" alt="VLA-Adapter Baseline Failed">
+                <p class="video-label fail-label">Baseline - Failed</p>
+              </div>
+              <div class="video-comparison-item">
+                <img src="videos/libero_VLA-Adapter_CF_put_the_yellow_and_white_mug_in_the_microwave_success.gif" alt="VLA-Adapter IDR Successful">
+                <p class="video-label success-label">+IDR - Successful</p>
+              </div>
+            </div>
+            <p class="video-label">Put the yellow mug in the microwave</p>
+          </div>
+
+          <!-- X-VLA -->
+          <div class="video-card">
+            <h4 style="text-align: center; margin-bottom: 0.5rem;">X-VLA</h4>
+            <div class="video-comparison">
+              <div class="video-comparison-item">
+                <img src="videos/libero_XVLA_turn_on_the_stove_and_put_the_moka_pot_on_it_fail.gif" alt="XVLA Baseline Failed">
+                <p class="video-label fail-label">Baseline - Failed</p>
+              </div>
+              <div class="video-comparison-item">
+                <img src="videos/libero_XVLA_CF_turn_on_the_stove_and_put_the_moka_pot_on_it_success.gif" alt="XVLA IDR Successful">
+                <p class="video-label success-label">+IDR - Successful</p>
+              </div>
+            </div>
+            <p class="video-label">Turn on the stove and put the moka pot on it</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIMPLER Benchmark Comparison Videos -->
+    <div class="columns is-centered has-text-centered section-block">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">SIMPLER Benchmark Comparison</h3>
+        <p class="has-text-justified" style="margin-bottom: 1rem;">
+          Comparison of baseline (left) vs IDR (right) on SIMPLER tasks across different embodiments.
+        </p>
+
+        <div class="video-grid">
+          <!-- Google Robot VA -->
+          <div class="video-card">
+            <h4 style="text-align: center; margin-bottom: 0.5rem;">Google Robot (VA)</h4>
+            <div class="video-comparison">
+              <div class="video-comparison-item">
+                <img src="videos/simpler_google_robot_va_XVLA_place_in_closed_drawer_fail.gif" alt="Google VA Baseline Failed">
+                <p class="video-label fail-label">Baseline - Failed</p>
+              </div>
+              <div class="video-comparison-item">
+                <img src="videos/simpler_google_robot_va_XVLA_place_in_closed_drawer_success.gif" alt="Google VA IDR Successful">
+                <p class="video-label success-label">+IDR - Successful</p>
+              </div>
+            </div>
+            <p class="video-label">Open top drawer and place coke_can into top drawer</p>
+          </div>
+
+          <!-- Google Robot VM -->
+          <div class="video-card">
+            <h4 style="text-align: center; margin-bottom: 0.5rem;">Google Robot (VM)</h4>
+            <div class="video-comparison">
+              <div class="video-comparison-item">
+                <img src="videos/simpler_google_robot_vm_XVLA_open_close_drawer_fail.gif" alt="Google VM Baseline Failed">
+                <p class="video-label fail-label">Baseline - Failed</p>
+              </div>
+              <div class="video-comparison-item">
+                <img src="videos/simpler_google_robot_vm_XVLA_open_close_drawer_success.gif" alt="Google VM IDR Successful">
+                <p class="video-label success-label">+IDR - Successful</p>
+              </div>
+            </div>
+            <p class="video-label">Open and close bottom drawer</p>
+          </div>
+
+          <!-- WidowX -->
+          <div class="video-card">
+            <h4 style="text-align: center; margin-bottom: 0.5rem;">WidowX</h4>
+            <div class="video-comparison">
+              <div class="video-comparison-item">
+                <img src="videos/simpler_widowx_XVLA_put_eggplant_in_basket_fail.gif" alt="WidowX Baseline Failed">
+                <p class="video-label fail-label">Baseline - Failed</p>
+              </div>
+              <div class="video-comparison-item">
+                <img src="videos/simpler_widowx_XVLA_put_eggplant_in_basket_succes.gif" alt="WidowX IDR Successful">
+                <p class="video-label success-label">+IDR - Successful</p>
+              </div>
+            </div>
+            <p class="video-label">Put eggplant into yellow basket</p>
+          </div>
+        </div>
       </div>
     </div>
 
