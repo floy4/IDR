@@ -128,6 +128,14 @@
       width: 100%;
       border-radius: 8px;
     }
+    .video-card video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #000;
+    }
     .video-label {
       font-size: 0.85rem;
       color: #666;
@@ -798,31 +806,63 @@
 <!-- Video Section -->
 <section class="section" style="background-color: #f9f9f9;">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Demo Videos</h2>
-    <p class="has-text-centered" style="margin-bottom: 2rem; color: #666;">
-      LIBERO benchmark comparison across vision-language-action models.
+    <h2 class="title is-3 has-text-centered">Real-World Benchmark Comparison</h2>
+    <p class="has-text-justified" style="margin-bottom: 2rem;">
+      Comparison of baseline and IDR on real-world manipulation tasks. Each video shows the baseline on the left and IDR on the right.
     </p>
 
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <figure>
-          <video
-            controls
-            playsinline
-            preload="metadata"
-            style="display: block; width: 100%; height: auto; border-radius: 12px; background: #000; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);"
-            aria-label="LIBERO benchmark comparison video">
-            <source
-              src="https://media.githubusercontent.com/media/floy4/IDR/master/libero_benchmark_comparison.mp4"
-              type="video/mp4">
-            Your browser does not support HTML5 video.
-            <a href="https://media.githubusercontent.com/media/floy4/IDR/master/libero_benchmark_comparison.mp4">Download the video</a>.
-          </video>
-          <figcaption class="figure-caption" style="margin-top: 0.75rem;">
-            LIBERO benchmark comparison: baseline versus IDR.
-          </figcaption>
-        </figure>
-      </div>
+    <div class="video-grid">
+      <article class="video-card">
+        <h4 style="text-align: center; margin-bottom: 0.75rem;">Clothes Manipulation</h4>
+        <video controls playsinline preload="metadata" aria-label="Clothes manipulation baseline and IDR comparison">
+          <source src="videos/homepage/clothes_comparison.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="video-comparison" style="margin-top: 0.75rem;">
+          <p class="video-label fail-label">Baseline - Failed</p>
+          <p class="video-label success-label">+IDR - Successful</p>
+        </div>
+        <p class="video-label">Real-world clothes manipulation</p>
+      </article>
+
+      <article class="video-card">
+        <h4 style="text-align: center; margin-bottom: 0.75rem;">Cleaning</h4>
+        <video controls playsinline preload="metadata" aria-label="Cleaning baseline and IDR comparison">
+          <source src="videos/homepage/cleaning_comparison.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="video-comparison" style="margin-top: 0.75rem;">
+          <p class="video-label fail-label">Baseline - Failed</p>
+          <p class="video-label success-label">+IDR - Successful</p>
+        </div>
+        <p class="video-label">Real-world cleaning task</p>
+      </article>
+
+      <article class="video-card">
+        <h4 style="text-align: center; margin-bottom: 0.75rem;">Coke Can Manipulation</h4>
+        <video controls playsinline preload="metadata" aria-label="Coke can manipulation baseline and IDR comparison">
+          <source src="videos/homepage/coke_can_comparison.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="video-comparison" style="margin-top: 0.75rem;">
+          <p class="video-label fail-label">Baseline - Failed</p>
+          <p class="video-label success-label">+IDR - Successful</p>
+        </div>
+        <p class="video-label">Real-world coke can manipulation</p>
+      </article>
+
+      <article class="video-card">
+        <h4 style="text-align: center; margin-bottom: 0.75rem;">Drawer Manipulation</h4>
+        <video controls playsinline preload="metadata" aria-label="Drawer manipulation baseline and IDR comparison">
+          <source src="videos/homepage/drawer_comparison.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="video-comparison" style="margin-top: 0.75rem;">
+          <p class="video-label fail-label">Baseline - Failed</p>
+          <p class="video-label success-label">+IDR - Successful</p>
+        </div>
+        <p class="video-label">Real-world drawer manipulation</p>
+      </article>
     </div>
   </div>
 </section>
