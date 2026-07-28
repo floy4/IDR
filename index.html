@@ -97,11 +97,17 @@
     .author-block {
       color: white;
       opacity: 0.95;
+      display: inline-block;
+      margin: 0 0.3em;
+      font-size: 1.05rem;
+    }
+    .author-block sup {
+      font-size: 0.75rem;
     }
     .affiliation-line {
       color: white;
       opacity: 0.85;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
     .section-divider {
       font-size: 1.5rem;
@@ -142,7 +148,7 @@
       aspect-ratio: 16 / 9;
       object-fit: contain;
       border-radius: 8px;
-      background: #000;
+      background: transparent;
     }
     .video-label {
       font-size: 0.85rem;
@@ -178,17 +184,27 @@
 <section class="top-banner" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px 30px;">
   <div style="text-align: center; color: white;">
     <h1 style="font-size: 2rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 0.3rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.3;">
-      Causality-driven Infer-Diagnose-Refine Framework<br>for Test-time Adaptation in Vision-Language-Action Models
+      A Causality-aware Infer-Diagnose-Refine Framework<br>for Test-time Modality Adaptation in VLA Models
     </h1>
 
-    <div style="font-size: 1.1rem; margin-bottom: 0.3rem;">
-      <span class="author-block">Anonymous Authors</span>
+    <div style="font-size: 1.1rem; margin-bottom: 0.3rem; line-height: 2;">
+      <span class="author-block">Haoyu Zhang<sup>1</sup></span>
+      <span class="author-block">Yuwei Wu<sup>1</sup></span>
+      <span class="author-block">Jin Chen<sup>2&dagger;</sup></span>
+      <span class="author-block">Gao Zhi<sup>1&dagger;</sup></span><br>
+      <span class="author-block">Zhenxin Diao<sup>1</sup></span>
+      <span class="author-block">Mingyang Gao<sup>1</sup></span>
+      <span class="author-block">Kun Wu<sup>3</sup></span>
+      <span class="author-block">Yongchun Liu<sup>2</sup></span>
+      <span class="author-block">Fan Li<sup>2</sup></span>
     </div>
-    <div style="font-size: 0.95rem; margin-bottom: 0.3rem;">
-      <span class="affiliation-line">Institution information to be added</span>
+    <div style="font-size: 0.85rem; margin-bottom: 0.3rem; color: rgba(255,255,255,0.85); line-height: 1.8;">
+      <sup>1</sup>Beijing Key Lab of Intell. Info. Tech., School of CS, Beijing Inst. of Tech. &nbsp;&nbsp;
+      <sup>2</sup>AInnovation Co. Ltd.<br>
+      <sup>3</sup>Beijing Innovation Center of Humanoid Robotics
     </div>
-    <div style="font-size: 0.9rem; margin-bottom: 1.5rem; opacity: 0.8;">
-      Venue / acceptance information to be added
+    <div style="font-size: 0.85rem; margin-bottom: 1.5rem; color: rgba(255,255,255,0.7);">
+      <sup>&dagger;</sup>Corresponding authors
     </div>
 
     <!-- Buttons: arXiv and Code only -->
@@ -197,7 +213,7 @@
         <span class="icon"><i class="ai ai-arxiv"></i></span>
         <span>arXiv</span>
       </a>
-      <a href="#" class="button is-normal is-rounded is-dark" style="opacity: 0.7;">
+      <a href="https://github.com/floy4/IDR-Framework" class="button is-normal is-rounded is-dark" style="opacity: 0.9;">
         <span class="icon"><i class="fab fa-github"></i></span>
         <span>Code</span>
       </a>
@@ -217,12 +233,13 @@
         <div class="content has-text-justified" style="text-align: justify; font-size: 1.05rem; line-height: 1.8;">
           <p>
             Vision-language-action (VLA) models predict sequential actions to execute tasks specified by language instructions, conditioned on visual observations and proprioceptive states.
-            However, existing models typically perform static multi-modal fusion across all inputs for action generation, overlooking the varying importance of visual observations during the dynamic execution process.
+            However, how to fuse modalities in VLA models remains an open problem, since robot manipulation involves dynamic phases, such as long-distance movements and close-range interactions, in which the importance of visual observations may vary over time.
           </p>
           <p>
-            In this paper, we propose an <strong>Infer-Diagnose-Refine (IDR)</strong> framework, a model-agnostic paradigm that can be seamlessly integrated with any VLA model at test time.
-            IDR first infers actions under factual and counterfactual scenarios of visual observations, and then diagnoses the causal effects of visual observations as the estimated dynamic importance, which is finally used to refine the initial action predictions in a training-free manner.
-            Extensive experiments on both simulation benchmarks and real-world tasks yield consistent performance gains across multiple VLA models.
+            In this paper, we propose an <strong>Infer-Diagnose-Refine (IDR)</strong> framework, a model-agnostic framework that can be integrated with diverse VLA architectures for refining action predictions at test time.
+            IDR first infers actions under factual and counterfactual scenarios of visual observations, and then diagnoses the causal effects of visual observations as the estimated dynamic importance, which is finally used to refine the action predictions in a training-free manner.
+            We further design a causality-aware action refiner to realize the IDR framework, including zero-padding interventions for inferring counterfactual actions, norm-based quantification for diagnosing causal effects, and gated residual fusion for refining actions.
+            Extensive experiments on both simulation benchmarks and real-world tasks show improvements in overall performance across multiple VLA backbones, demonstrating the efficacy of dynamically adjusting visual importance at test time.
           </p>
         </div>
       </div>
@@ -815,14 +832,14 @@
 <section class="section" style="background-color: #f9f9f9;">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Real-World Benchmark Comparison</h2>
-    <p class="has-text-justified" style="margin-bottom: 2rem;">
-      Comparison of baseline and IDR on real-world manipulation tasks. Each video shows the baseline on the left and IDR on the right.
+    <p class="has-text-centered" style="margin-bottom: 2rem; color: #666; max-width: 700px; margin-left: auto; margin-right: auto;">
+      Side-by-side comparison of baseline (left) and IDR (right) on real-world tasks using a dual-arm ARX5 platform. Videos are shown at 2× speed.
     </p>
 
     <div class="video-grid real-world-video-grid">
       <article class="video-card">
-        <h4 style="text-align: center; margin-bottom: 0.75rem;">Clothes Manipulation</h4>
-        <video autoplay loop muted playsinline preload="metadata" aria-label="Clothes manipulation baseline and IDR comparison">
+        <h4 style="text-align: center; margin-bottom: 0.75rem;">Fold Clothes</h4>
+        <video autoplay loop muted playsinline preload="metadata" aria-label="Fold Clothes baseline and IDR comparison">
           <source src="videos/homepage/clothes_comparison.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
@@ -830,12 +847,12 @@
           <p class="video-label fail-label">Baseline - Failed</p>
           <p class="video-label success-label">+IDR - Successful</p>
         </div>
-        <p class="video-label">Real-world clothes manipulation</p>
+        <p class="video-label">Deformable object manipulation — fold clothes</p>
       </article>
 
       <article class="video-card">
-        <h4 style="text-align: center; margin-bottom: 0.75rem;">Cleaning</h4>
-        <video autoplay loop muted playsinline preload="metadata" aria-label="Cleaning baseline and IDR comparison">
+        <h4 style="text-align: center; margin-bottom: 0.75rem;">Sweep Trash</h4>
+        <video autoplay loop muted playsinline preload="metadata" aria-label="Sweep Trash baseline and IDR comparison">
           <source src="videos/homepage/cleaning_comparison.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
@@ -843,12 +860,12 @@
           <p class="video-label fail-label">Baseline - Failed</p>
           <p class="video-label success-label">+IDR - Successful</p>
         </div>
-        <p class="video-label">Real-world cleaning task</p>
+        <p class="video-label">Contact-rich sweeping — sweep trash into a dustpan</p>
       </article>
 
       <article class="video-card">
-        <h4 style="text-align: center; margin-bottom: 0.75rem;">Coke Can Manipulation</h4>
-        <video autoplay loop muted playsinline preload="metadata" aria-label="Coke can manipulation baseline and IDR comparison">
+        <h4 style="text-align: center; margin-bottom: 0.75rem;">Grab Cola</h4>
+        <video autoplay loop muted playsinline preload="metadata" aria-label="Grab Cola baseline and IDR comparison">
           <source src="videos/homepage/coke_can_comparison.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
@@ -856,12 +873,12 @@
           <p class="video-label fail-label">Baseline - Failed</p>
           <p class="video-label success-label">+IDR - Successful</p>
         </div>
-        <p class="video-label">Real-world coke can manipulation</p>
+        <p class="video-label">Bimanual coordination — grab and transfer a cola can</p>
       </article>
 
       <article class="video-card">
-        <h4 style="text-align: center; margin-bottom: 0.75rem;">Drawer Manipulation</h4>
-        <video autoplay loop muted playsinline preload="metadata" aria-label="Drawer manipulation baseline and IDR comparison">
+        <h4 style="text-align: center; margin-bottom: 0.75rem;">Organize Table</h4>
+        <video autoplay loop muted playsinline preload="metadata" aria-label="Organize Table baseline and IDR comparison">
           <source src="videos/homepage/drawer_comparison.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
@@ -869,7 +886,7 @@
           <p class="video-label fail-label">Baseline - Failed</p>
           <p class="video-label success-label">+IDR - Successful</p>
         </div>
-        <p class="video-label">Real-world drawer manipulation</p>
+        <p class="video-label">Long-horizon sequential — place 5 objects into a drawer</p>
       </article>
     </div>
   </div>
@@ -881,8 +898,8 @@
     <h2 class="title is-3 has-text-centered">BibTeX</h2>
     <div class="bibtex-container">
       <pre><code>@article{idr2026,
-  title={Causality-driven Infer-Diagnose-Refine Framework for Test-time Adaptation in Vision-Language-Action Models},
-  author={Anonymous Authors},
+  title={A Causality-aware Infer-Diagnose-Refine Framework for Test-time Modality Adaptation in VLA Models},
+  author={Haoyu Zhang and Yuwei Wu and Jin Chen and Gao Zhi and Zhenxin Diao and Mingyang Gao and Kun Wu and Yongchun Liu and Fan Li},
   journal={Manuscript},
   year={2026}
 }</code></pre>
